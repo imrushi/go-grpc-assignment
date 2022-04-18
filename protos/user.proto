@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option go_package="./users";
 
+// user information structure
 message User {
     int64 id = 1;
     string fname = 2;
@@ -11,19 +12,28 @@ message User {
     bool Married = 6;
 }
 
+// for one user detail request we must get its id
 message UserDetailRequest {
     int64 id = 1;
 }
 
+// for user detail Response we will return single user
 message UserDetailResponse {
+    User users = 1;
+}
+
+// for multiple user detail respone we must get its list of id : 
+// thats why we have used repeated
+message ListOfUserDetailsRequest {
+    repeated int64 ids = 1;
+}
+
+// for multiple user detail Response we will return array of users
+message ListOfUserDetailsResponse {
     repeated User users = 1;
 }
 
-message ListOfUserDetailsRequest {
-    repeated int64 id = 1;
-}
-
-service ServiceName {
-    // rpc GetUserDetails (UserDetailRequest) returns (stream User);
-    rpc GetUsers (UserDetailRequest) returns (UserDetailResponse);
+service UserDetail {
+    rpc GetUser (UserDetailRequest) returns (UserDetailResponse);
+    rpc GetUsersList (ListOfUserDetailsRequest) returns (ListOfUserDetailsResponse);
 }
