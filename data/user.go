@@ -46,25 +46,12 @@ func NewUserDetail(l logrus.Logger) *UserDetail {
 }
 
 func FindIndexByUserID(id int64) (int, error) {
-	// for i, p := range userList {
-	// 	if int64(p.Id) == id {
-	// 		return i, nil
-	// 	}
-	// }
 	result, err := OrderAgnosticBS(userList, id)
 	if err != nil {
 		return -1, err
 	}
 
 	return result, nil
-	//return grpc error
-	// err := status.Errorf(
-	// 	codes.NotFound,
-	// 	"User with id %d doesn't exist in Database",
-	// 	id,
-	// )
-	// return -1, err
-	// return -1, err
 }
 
 func OrderAgnosticBS(arr []*protos.User, target int64) (int, error) {
