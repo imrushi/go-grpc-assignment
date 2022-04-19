@@ -1,5 +1,6 @@
 syntax = "proto3";
 
+import "google/rpc/status.proto";
 option go_package="./users";
 
 // user information structure
@@ -31,6 +32,7 @@ message ListOfUserDetailsRequest {
 // for multiple user detail Response we will return array of users
 message ListOfUserDetailsResponse {
     repeated User users = 1;
+    google.rpc.Status error = 2;
 }
 
 service UserDetail {
