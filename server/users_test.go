@@ -33,8 +33,8 @@ func TestGetUser(t *testing.T) {
 		if err != nil {
 			log.Error(err)
 		}
-		got := res.String()
-		expected := `users:{id:1  fname:"Tony"  city:"Maliby"  phone:1234567890  height:5.67  Married:true}`
+		js, _ := json.Marshal(res)
+		expected := `{"users":{"id":1,"fname":"Tony","city":"Maliby","phone":1234567890,"height":5.67,"Married":true}}`
 		assert.Equal(t, expected, got)
 	})
 
