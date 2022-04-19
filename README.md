@@ -61,7 +61,7 @@ https://github.com/fullstorydev/grpcurl
 ### User Data
 
 ```
-{
+[
     {
       "id": "1",
       "fname": "Tony",
@@ -85,7 +85,7 @@ https://github.com/fullstorydev/grpcurl
       "height": 5.3,
       "Married": true
     }
-}
+]
 ```
 
 ### List Services
